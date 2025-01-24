@@ -9,6 +9,22 @@ class Game
   end
 
   def start
+    game_over = false
+    until game_over
+      @hangman.make_guess(get_input)
+      @hangman.draw_board
+      game_over = @hangman.game_over?
+    end
+  end
+
+  def get_input
+    puts 'Guess a letter:'
+    response = gets.chomp.downcase
+    until ('a'..'z').include? response
+      puts 'Input not recognized, please guess a letter'
+      response = gets.chomp.downcase
+    end
+    response
   end
 end
 
