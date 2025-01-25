@@ -17,7 +17,7 @@ class Game
     end
   end
 
-  def get_input
+  def read_input
     puts 'Guess a letter:'
     response = gets.chomp.downcase
     until ('a'..'z').include? response
