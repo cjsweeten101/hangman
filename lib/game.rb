@@ -15,6 +15,11 @@ class Game
       @hangman.draw_board
       game_over = @hangman.game_over?
     end
+    game_end
+  end
+
+  def game_end
+    puts @hangman.game_over_result
   end
 
   def read_input

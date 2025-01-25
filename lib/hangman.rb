@@ -46,6 +46,14 @@ class Hangman
   end
 
   def game_over?
-    @incorrect_guess_count >= @board_states.length
+    @incorrect_guess_count >= @board_states.length || !@correct_guesses.include?('-')
+  end
+
+  def game_over_result
+    if @incorrect_guess_count >= @board_states.length
+      "Game over, the word was #{@secret_word_array.join('')}"
+    elsif !@correct_guesses.include?('-')
+      'Game over, you win!'
+    end
   end
 end
