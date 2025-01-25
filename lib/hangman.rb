@@ -10,7 +10,6 @@ class Hangman
     @incorrect_guess_count = 0
     @incorrect_guesses = []
     initialize_board
-    draw_board
   end
 
   def initialize_board

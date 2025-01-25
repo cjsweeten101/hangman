@@ -5,14 +5,15 @@ require_relative 'hangman'
 class Game
   def initialize(dict_arr, min_length, max_length)
     puts 'Welcome to hangman!  Type save anytime to save a game'
-    puts 'Or type load now to load a previously saved game'
     dict = dict_arr.select { |word| word.length >= min_length && word.length <= max_length }
     @hangman = Hangman.new(dict.sample)
   end
 
   def start
     game_over = false
-    load_game if gets.chomp.downcase == 'load'
+    puts 'Would you like to load a previously saved game?  y/n'
+    load_game if gets.chomp.downcase == 'y'
+    @hangman.draw_board
     until game_over
       @hangman.make_guess(read_input)
       @hangman.draw_board
