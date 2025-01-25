@@ -11,7 +11,7 @@ class Game
   def start
     game_over = false
     until game_over
-      @hangman.make_guess(get_input)
+      @hangman.make_guess(read_input)
       @hangman.draw_board
       game_over = @hangman.game_over?
     end
