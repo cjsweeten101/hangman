@@ -33,7 +33,6 @@ class Hangman
   end
 
   def draw_board
-    puts @secret_word_array.join('')
     puts create_hangman_drawing
     puts 'Incorrect Guesses:'
     puts @incorrect_guesses.join(', ')

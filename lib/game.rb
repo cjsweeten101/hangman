@@ -12,6 +12,7 @@ class Game
 
   def start
     game_over = false
+    load_game if gets.chomp.downcase == 'load'
     until game_over
       @hangman.make_guess(read_input)
       @hangman.draw_board
@@ -27,22 +28,12 @@ class Game
   def read_input
     puts 'Guess a letter:'
     response = gets.chomp.downcase
-    if response == 'save'
-      save_game
-      puts 'game saved'
-      puts 'Guess a letter:'
-      response = gets.chomp.downcase
-    elsif response == 'load'
-      @hangman = load_game
-      puts 'game loaded'
-      @hangman.draw_board
-      puts 'Guess a letter:'
-      response = gets.chomp.downcase
-    end
+    response = save_game if response == 'save'
     until ('a'..'z').include? response
       puts 'Input not recognized, please guess a letter'
       response = gets.chomp.downcase
     end
+    puts response
     response
   end
 
@@ -50,11 +41,16 @@ class Game
     File.open('saved_game.bin', 'w') do |f|
       f.write(Marshal.dump(@hangman))
     end
+    puts 'game saved'
+    puts 'Guess a letter:'
+    gets.chomp.downcase
   end
 
   def load_game
     data = File.open('saved_game.bin', 'r')
-    Marshal.load(data)
+    @hangman = Marshal.load(data)
+    puts 'Game loaded!'
+    @hangman.draw_board
   end
 end
 
