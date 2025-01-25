@@ -46,5 +46,6 @@ class Hangman
   end
 
   def game_over?
+    @incorrect_guess_count >= @board_states.length
   end
 end
