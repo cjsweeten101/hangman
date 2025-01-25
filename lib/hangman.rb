@@ -3,12 +3,12 @@
 # Implements the hangman game object
 class Hangman
   @correct_guesses = []
-  @incorrect_guesses = []
 
   def initialize(secret_word)
     @board_states = ["   O\n", '  /', '|', "\\\n", '  / ', '\\']
     @secret_word_array = secret_word.split('')
     @incorrect_guess_count = 0
+    @incorrect_guesses = []
     initialize_board
     draw_board
   end
@@ -27,6 +27,7 @@ class Hangman
         @correct_guesses[i] = letter if letter == l
       end
     else
+      @incorrect_guesses << letter
       @incorrect_guess_count += 1
     end
   end
@@ -34,6 +35,9 @@ class Hangman
   def draw_board
     puts @secret_word_array.join('')
     puts create_hangman_drawing
+    puts 'Incorrect Guesses:'
+    puts @incorrect_guesses.join(', ')
+    puts 'Correct Guesses:'
     puts @correct_guesses.join('')
   end
 
