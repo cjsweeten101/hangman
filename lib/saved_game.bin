@@ -1,0 +1,5 @@
+o:Hangman
+:@board_states[I"
+   O
+:ETI"  /;TI"|;TI"\
+;TI"	  / ;TI"\;T:@secret_word_array[I"s;TI"p;TI"r;TI"i;TI"n;TI"g;T:@incorrect_guess_counti	:@incorrect_guesses[	I"z;TI"z;TI"z;TI"z;T:@correct_guesses[I"s;TI"p;TI"-;T@@@
